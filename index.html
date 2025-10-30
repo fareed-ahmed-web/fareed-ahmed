@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fareed Ahmed | Principal Application Developer</title>
+    <meta
+      name="description"
+      content="Fareed Ahmed - Principal Application Developer specializing in Angular, TypeScript, and Node.js. Expert in scalable front-end architecture and enterprise UI solutions."
+    />
+    <meta
+      name="keywords"
+      content="Fareed Ahmed, Angular, Front-End Developer, Principal Application Developer, TypeScript, Node.js, Architect"
+    />
+    <meta name="author" content="Fareed Ahmed" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII="
+    />
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- ---------- GOOGLE FONTS ---------- -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --font-heading: "Poppins", sans-serif;
+        --font-body: "Inter", sans-serif;
+        --bg: #0f172a;
+        --text: #e2e8f0;
+        --accent: #38bdf8;
+        --secondary: #1e293b;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: var(--font-body);
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        overflow-x: hidden;
+        font-family: var(--font-body);
+        line-height: 1.6;
+        color: var(--text);
+        background: var(--bg);
+        margin: 0;
+        padding: 0;
+        transition: background 0.5s ease, color 0.5s ease;
+      }
+
+      /* Apply globally */
+
+      /* Headings */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: var(--font-heading);
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: #e2e8f0;
+      }
+
+      /* Navigation + Buttons */
+      nav,
+      .logo,
+      .nav-links a,
+      button {
+        font-family: var(--font-heading);
+      }
+
+      /* Loader */
+      .loader-text span {
+        font-family: var(--font-heading);
+      }
+
+      /* Paragraphs */
+      p,
+      span,
+      li {
+        font-family: var(--font-body);
+        font-weight: 400;
+        color: #cbd5e1;
+      }
+
+      /* ---------- PRELOADER ---------- */
+      /* ---------- TEXT LOADER ---------- */
+      #preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 99999;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+      }
+
+      .loader-text span {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 6px;
+        opacity: 0;
+        display: inline-block;
+        transform: translateY(20px);
+        animation: fadeUp 1.2s ease forwards;
+      }
+
+      .loader-text span:nth-child(1) {
+        animation-delay: 0s;
+      }
+      .loader-text span:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+      .loader-text span:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+      .loader-text span:nth-child(4) {
+        animation-delay: 0.3s;
+      }
+      .loader-text span:nth-child(5) {
+        animation-delay: 0.4s;
+      }
+      .loader-text span:nth-child(6) {
+        animation-delay: 0.5s;
+      }
+
+      @keyframes fadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        60% {
+          opacity: 1;
+          transform: translateY(-5px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Fade-out effect */
+      body.loaded #preloader {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      /* ---------- HERO SECTION ---------- */
+      header {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: linear-gradient(180deg, var(--bg), var(--secondary));
+        animation: zoomIn 1.2s ease-out;
+      }
+      header h1 {
+        color: var(--accent);
+        font-size: 3rem;
+      }
+      header h2 {
+        color: #94a3b8;
+        font-size: 1.3rem;
+        margin-top: 10px;
+      }
+      .buttons {
+        margin-top: 25px;
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .btn {
+        background: var(--accent);
+        color: var(--bg);
+        padding: 10px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+      }
+      .btn:hover {
+        transform: scale(1.05);
+        filter: brightness(1.1);
+      }
+      @keyframes zoomIn {
+        from {
+          transform: scale(0.9);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      /* ---------- SECTIONS BASE ---------- */
+      section {
+        padding: 80px 10%;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+      }
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      h1, h2, h3, h4, .logo {
+        font-family: var(--font-heading);
+        font-weight: 600;
+      }
+      h3 {
+        text-align: center;
+        color: var(--accent);
+        font-size: 2rem;
+        margin-bottom: 25px;
+        letter-spacing: -0.02em;
+      }
+
+      /* ---------- ABOUT ---------- */
+      .about p {
+        text-align: center;
+        color: #94a3b8;
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 40px;
+      }
+      .stat {
+        text-align: center;
+        background: var(--secondary);
+        padding: 30px;
+        border-radius: 15px;
+        width: 180px;
+        transition: transform 0.4s;
+      }
+      .stat:hover {
+        transform: translateY(-10px);
+      }
+      .stat h4 {
+        font-size: 2.5rem;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+
+      /* ---------- PROJECTS ---------- */
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 20px;
+      }
+      .card {
+        background: var(--secondary);
+        padding: 20px;
+        border-radius: 15px;
+        transition: 0.4s;
+      }
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 15px rgba(56, 189, 248, 0.2);
+      }
+      .card h4 {
+        color: var(--accent);
+        margin-bottom: 10px;
+      }
+
+      /* ---------- SKILLS ---------- */
+      /* --- Skill Animation with Stagger --- */
+      .skill {
+        background: var(--secondary);
+        color: var(--accent);
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-weight: 500;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease-out;
+        will-change: transform, opacity;
+      }
+      .skill.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .skill:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 12px var(--accent);
+      }
+
+      /* ---------- NAVBAR ---------- */
+      /* ---------- ENHANCED NAVBAR ---------- */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.3);
+        backdrop-filter: blur(12px);
+        display: flex;
+        justify-content: center;
+        z-index: 9999;
+        transition: all 0.4s ease;
+        border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+      }
+      nav.scrolled {
+        background: rgba(15, 23, 42, 0.9);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+      .nav-content {
+        width: 90%;
+        max-width: 1200px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 0;
+      }
+      .logo {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--accent);
+        letter-spacing: 1px;
+      }
+      .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: var(--accent);
+        transition: width 0.3s ease;
+      }
+      .nav-links a:hover::after,
+      .nav-links a.active::after {
+        width: 100%;
+      }
+      .nav-links a:hover,
+      .nav-links a.active {
+        color: var(--accent);
+      }
+
+      /* Responsive */
+      @media (max-width: 700px) {
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 16px;
+        }
+      }
+
+      /* ---------- BACKGROUND IMAGES PER SECTION ---------- */
+      header {
+        background: linear-gradient(
+            rgba(15, 23, 42, 0.85),
+            rgba(15, 23, 42, 0.85)
+          ),
+          url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1500&q=80")
+            center/cover no-repeat;
+      }
+
+      #about {
+        background: linear-gradient(
+            rgba(15, 23, 42, 0.8),
+            rgba(15, 23, 42, 0.8)
+          ),
+          url("https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=1500&q=80")
+            center/cover no-repeat;
+      }
+
+      #projects {
+        background: linear-gradient(
+            rgba(15, 23, 42, 0.85),
+            rgba(15, 23, 42, 0.85)
+          ),
+          url("https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1500&q=80")
+            center/cover no-repeat;
+      }
+
+      #experience {
+        background: linear-gradient(
+            rgba(15, 23, 42, 0.85),
+            rgba(15, 23, 42, 0.85)
+          ),
+          url("https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1500&q=80")
+            center/cover no-repeat;
+      }
+
+      #education {
+        background: linear-gradient(
+            rgba(15, 23, 42, 0.85),
+            rgba(15, 23, 42, 0.85)
+          ),
+          url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1500&q=80")
+            center/cover no-repeat;
+      }
+
+      #skills {
+        background: linear-gradient(
+            rgba(15, 23, 42, 0.8),
+            rgba(15, 23, 42, 0.8)
+          ),
+          url("https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=1500&q=80")
+            center/cover no-repeat;
+      }
+
+      footer {
+        background: linear-gradient(
+            rgba(15, 23, 42, 0.95),
+            rgba(15, 23, 42, 0.95)
+          ),
+          url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1500&q=80")
+            center/cover no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ---------- PRELOADER ---------- -->
+    <div id="preloader">
+      <div class="loader-text">
+        <span>F</span><span>A</span><span>R</span><span>E</span><span>E</span
+        ><span>D</span>
+      </div>
+    </div>
+
+    <!-- ---------- HERO ---------- -->
+    <header>
+      <h1>Hi, I'm Fareed Ahmed</h1>
+      <h2>Principal Application Developer | Angular | TypeScript | Node.js</h2>
+      <div class="buttons">
+        <a href="mailto:fareedaisc@gmail.com" class="btn">Email</a>
+        <a
+          href="https://linkedin.com/in/fareed-ahmed-frontend/"
+          target="_blank"
+          class="btn"
+          >LinkedIn</a
+        >
+        <a href="https://github.com/Softquint" target="_blank" class="btn"
+          >GitHub</a
+        >
+      </div>
+    </header>
+
+    <!-- ---------- NAVBAR ---------- -->
+    <nav id="navbar">
+      <div class="nav-content">
+        <div class="logo">Fareed Ahmed</div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- ---------- ABOUT ---------- -->
+    <section id="about" class="about">
+      <h3>About Me</h3>
+      <p>
+        I’m a strategic front-end architect with 13+ years of experience leading
+        Angular and modern web projects for Oracle, Cognizant, and Synechron.
+        Passionate about scalable, maintainable, and high-performance front-end
+        solutions.
+      </p>
+      <div class="stats">
+        <div class="stat">
+          <h4 class="count" data-target="13">0</h4>
+          <p>Years Experience</p>
+        </div>
+        <div class="stat">
+          <h4 class="count" data-target="98">0</h4>
+          <p>% On-Time Delivery</p>
+        </div>
+        <div class="stat">
+          <h4 class="count" data-target="15">0</h4>
+          <p>% Velocity Gain</p>
+        </div>
+        <div class="stat">
+          <h4 class="count" data-target="20">0</h4>
+          <p>% Defect Reduction</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- PROJECTS ---------- -->
+    <section id="projects">
+      <h3>Key Projects</h3>
+      <div class="projects">
+        <div class="card">
+          <h4>Higher Education Cloud</h4>
+          <p>
+            Built modular, cloud-based academic systems improving scalability
+            and integrations.
+          </p>
+        </div>
+        <div class="card">
+          <h4>O2 UK Website</h4>
+          <p>
+            Modernized front-end with Angular, achieving real-time updates and
+            improved performance.
+          </p>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 30px">
+        <a href="https://github.com/Softquint" target="_blank" class="btn"
+          >View GitHub Projects</a
+        >
+      </div>
+    </section>
+    <!-- ---------- EXPERIENCE TIMELINE ---------- -->
+    <section id="experience">
+      <h3>Experience</h3>
+      <style>
+        .timeline {
+          position: relative;
+          margin: 50px auto;
+          width: 90%;
+          max-width: 800px;
+        }
+        .timeline::before {
+          content: "";
+          position: absolute;
+          left: 50%;
+          top: 0;
+          transform: translateX(-50%);
+          width: 4px;
+          height: 100%;
+          background: var(--secondary);
+          border-radius: 2px;
+          overflow: hidden;
+        }
+        .timeline-item {
+          position: relative;
+          width: 50%;
+          padding: 20px 40px;
+          box-sizing: border-box;
+        }
+        .timeline-item:nth-child(odd) {
+          left: 0;
+          text-align: left;
+        }
+        .timeline-item:nth-child(even) {
+          left: 50%;
+        }
+        .timeline-content {
+          background: var(--secondary);
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 12px rgba(56, 189, 248, 0.15);
+          opacity: 0;
+          transform: translateY(40px);
+          transition: all 0.8s ease;
+        }
+        .timeline-item.visible .timeline-content {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .timeline-dot {
+          position: absolute;
+          top: 25px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 18px;
+          height: 18px;
+          background: var(--accent);
+          border-radius: 50%;
+          box-shadow: 0 0 0 4px var(--bg);
+        }
+        .timeline-content h4 {
+          color: var(--accent);
+          margin-bottom: 5px;
+        }
+        .timeline-content span {
+          font-size: 0.9rem;
+          color: #94a3b8;
+        }
+        .timeline-content p {
+          margin-top: 10px;
+          color: #cbd5e1;
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+        @media (max-width: 700px) {
+          .timeline::before {
+            left: 8px;
+          }
+          .timeline-item,
+          .timeline-item:nth-child(even) {
+            left: 0;
+            width: 100%;
+            padding-left: 30px;
+            text-align: left;
+          }
+          .timeline-dot {
+            left: 8px;
+            transform: none;
+          }
+        }
+      </style>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>Principal Front-End Developer — Oracle</h4>
+            <span>2022 – Present</span>
+            <p>
+              Led modernization using Angular standalone components, reducing
+              bundle size by 30%. Designed scalable front-end architecture for
+              enterprise education solutions.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>Lead Front-End Developer — Cognizant</h4>
+            <span>2017 – 2022</span>
+            <p>
+              Delivered multiple high-traffic Angular apps for global clients.
+              Introduced reusable UI frameworks, reducing development time by
+              25%.
+            </p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h4>Senior UI Developer — Synechron</h4>
+            <span>2012 – 2017</span>
+            <p>
+              Built responsive, accessible interfaces for financial clients.
+              Championed migration to TypeScript and component-based
+              architecture.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h4>
+            Earlier Roles — Cybage Software, Enovate-it Solutions, Halosys
+          </h4>
+          <span>Sep 2012 – Oct 2016 | Pune</span>
+          <p>
+            Contributed to multiple enterprise projects, excelling in front-end
+            efficiencies, modular design, and code quality.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---------- SKILLS ---------- -->
+    <section id="skills">
+      <h3>Skills</h3>
+      <div
+        class="skills"
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px;
+        "
+      >
+        <div class="skill">Angular</div>
+        <div class="skill">TypeScript</div>
+        <div class="skill">javaScript ES6</div>
+        <div class="skill">Node.js</div>
+        <div class="skill">HTML5</div>
+        <div class="skill">CSS3</div>
+        <div class="skill">CI/CD</div>
+        <div class="skill">Agile</div>
+      </div>
+    </section>
+
+    <!-- ---------- CONTACT / FOOTER ---------- -->
+    <footer
+      id="contact"
+      style="
+        text-align: center;
+        padding: 40px 10px;
+        background: var(--secondary);
+        color: #94a3b8;
+      "
+    >
+      <p>
+        📧
+        <a
+          href="mailto:fareedaisc@gmail.com"
+          style="color: var(--accent); text-decoration: none"
+          >fareedaisc@gmail.com</a
+        >
+      </p>
+      <p>
+        🔗
+        <a
+          href="https://linkedin.com/in/fareed-ahmed-frontend/"
+          target="_blank"
+          style="color: var(--accent)"
+          >LinkedIn</a
+        >
+        |
+        <a
+          href="https://github.com/Softquint"
+          target="_blank"
+          style="color: var(--accent)"
+          >GitHub</a
+        >
+      </p>
+      <p>© 2025 Fareed Ahmed. All Rights Reserved.</p>
+    </footer>
+
+    <!-- ---------- JAVASCRIPT ---------- -->
+    <script>
+      // Preloader
+      // Smooth fade-out when page is fully loaded
+      window.addEventListener("load", () => {
+        setTimeout(() => document.body.classList.add("loaded"), 600);
+      });
+
+      // Section reveal
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.2 }
+      );
+      document.querySelectorAll("section").forEach((s) => observer.observe(s));
+
+      // Counters
+      const counters = document.querySelectorAll(".count");
+      const speed = 100;
+      const runCounters = () => {
+        counters.forEach((counter) => {
+          const update = () => {
+            const target = +counter.getAttribute("data-target");
+            const count = +counter.innerText;
+            const inc = target / speed;
+            if (count < target) {
+              counter.innerText = Math.ceil(count + inc);
+              setTimeout(update, 20);
+            } else
+              counter.innerText =
+                target + (counter.dataset.target === "98" ? "%" : "+");
+          };
+          update();
+        });
+      };
+      const stats = document.querySelector(".stats");
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) runCounters();
+          });
+        },
+        { threshold: 0.5 }
+      ).observe(stats);
+
+      // Timeline reveal
+      const timelineItems = document.querySelectorAll(".timeline-item");
+      const tObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.3 }
+      );
+      timelineItems.forEach((i) => tObserver.observe(i));
+
+      // Skills staggered animation
+      // Skill reveal animation with staggered delay
+      const skills = document.querySelectorAll(".skill");
+      const skillObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              skills.forEach((skill, index) => {
+                setTimeout(() => skill.classList.add("visible"), index * 150);
+              });
+              skillObserver.disconnect(); // Animate once
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      skills.forEach((s) => skillObserver.observe(s));
+
+      // Smooth scroll for nav links
+      document.querySelectorAll("nav a").forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            const yOffset = -60; // offset for fixed navbar
+            const y =
+              target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+        });
+      });
+
+      const navbar = document.querySelector("nav");
+      const navLinks = document.querySelectorAll(".nav-links a");
+      const sectionsNav = document.querySelectorAll("section");
+
+      let lastScroll = 0;
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+        let current = "";
+
+        // ---------- ACTIVE LINK HIGHLIGHT ----------
+        sectionsNav.forEach((section) => {
+          const sectionTop = section.offsetTop - 120;
+          const sectionHeight = section.clientHeight;
+          if (
+            currentScroll >= sectionTop &&
+            currentScroll < sectionTop + sectionHeight
+          ) {
+            current = section.getAttribute("id");
+          }
+        });
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href").includes(current)) {
+            link.classList.add("active");
+          }
+        });
+
+        // ---------- NAVBAR BACKGROUND CHANGE ----------
+        if (currentScroll > 100) navbar.classList.add("scrolled");
+        else navbar.classList.remove("scrolled");
+
+        // ---------- NAVBAR HIDE ON SCROLL DOWN ----------
+        if (currentScroll > lastScroll && currentScroll > 200) {
+          navbar.style.transform = "translateY(-100%)";
+        } else {
+          navbar.style.transform = "translateY(0)";
+        }
+        lastScroll = currentScroll <= 0 ? 0 : currentScroll; // avoid negative scroll
+      });
+    </script>
+
+    <!-- ---------- JSON-LD STRUCTURED DATA ---------- -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Fareed Ahmed",
+        "jobTitle": "Principal Application Developer",
+        "email": "fareedaisc@gmail.com",
+        "url": "https://softquint.github.io/fareed-portfolio/",
+        "sameAs": [
+          "https://www.linkedin.com/in/fareed-ahmed-frontend/",
+          "https://github.com/Softquint"
+        ]
+      }
+    </script>
+  </body>
+</html>
